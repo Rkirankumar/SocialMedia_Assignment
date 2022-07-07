@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -76,16 +77,20 @@ class ViewFragment : Fragment() {
                         val user = userSnapshot.getValue(UserInfo::class.java)
                         userArrayList.add(user!!)
                     }
-                    //set data object
-                    mRecyclerView!!.setMediaObjects(userArrayList)
-                    mAdapter = initGlide()?.let { activity?.let { it1 ->
-                        MediaRecyclerAdapter(userArrayList, it,
-                            it1
-                        )
-                    } }
-                    mRecyclerView!!.adapter = mAdapter
+                    //set data
+                    if(userArrayList.size!=0) {
+                        mRecyclerView!!.setMediaObjects(userArrayList)
+                        mAdapter = initGlide()?.let {
+                            activity?.let { it1 ->
+                                MediaRecyclerAdapter(
+                                    userArrayList, it,
+                                    it1
+                                )
+                            }
+                        }
+                        mRecyclerView!!.adapter = mAdapter
                         mRecyclerView!!.smoothScrollToPosition(1)
-
+                    }
                 }
             }
             override fun onCancelled(error: DatabaseError) {
@@ -93,12 +98,7 @@ class ViewFragment : Fragment() {
             }
         })
     }
-    override fun onResume() {
-        if (mRecyclerView != null) {
-            mRecyclerView!!.releasePlayer()
-        }
-        super.onResume()
-    }
+
     override fun onPause() {
         if (mRecyclerView != null) {
             mRecyclerView!!.releasePlayer()

@@ -72,7 +72,6 @@ public class ExoPlayerRecyclerView extends RecyclerView {
    */
   // Media List
   private ArrayList<UserInfo> mediaObjects = new ArrayList<>();
-  private ArrayList<CommentInfo> commentsObjects = new ArrayList<>();
   private int videoSurfaceDefaultHeight = 0;
   private int screenDefaultHeight = 0;
   private Context context;
@@ -277,11 +276,7 @@ public class ExoPlayerRecyclerView extends RecyclerView {
         targetPosition = startPosition;
       }
     } else {
-      if(mediaObjects.size()==0){
-        targetPosition = commentsObjects.size() - 1;
-      }else if(commentsObjects.size()==0){
-        targetPosition = mediaObjects.size() - 1;
-      }
+      targetPosition = mediaObjects.size() - 1;
 
     }
 
@@ -329,17 +324,14 @@ public class ExoPlayerRecyclerView extends RecyclerView {
     DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(
         context, Util.getUserAgent(context, AppName));
 
-    if (mediaObjects.get(targetPosition).getUrl() != null) {
+    String mediaUrl = mediaObjects.get(targetPosition).getUrl();
+    if (mediaUrl != null) {
       MediaSource videoSource = new ExtractorMediaSource.Factory(dataSourceFactory)
-          .createMediaSource(Uri.parse(mediaObjects.get(targetPosition).getUrl()));
-      videoPlayer.prepare(videoSource);
-      videoPlayer.setPlayWhenReady(true);
-    }else  if (commentsObjects.get(targetPosition).getUrl() != null) {
-      MediaSource videoSource = new ExtractorMediaSource.Factory(dataSourceFactory)
-              .createMediaSource(Uri.parse(commentsObjects.get(targetPosition).getUrl()));
+              .createMediaSource(Uri.parse(mediaUrl));
       videoPlayer.prepare(videoSource);
       videoPlayer.setPlayWhenReady(true);
     }
+
   }
 
   /**
@@ -467,9 +459,7 @@ public class ExoPlayerRecyclerView extends RecyclerView {
   public void setMediaObjects(ArrayList<UserInfo> mediaObjects) {
     this.mediaObjects = mediaObjects;
   }
-  public void setCommentsObjects(ArrayList<CommentInfo> commentsObjects) {
-    this.commentsObjects = commentsObjects;
-  }
+
 
   /**
    * Volume ENUM

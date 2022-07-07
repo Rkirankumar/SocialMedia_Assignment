@@ -161,12 +161,6 @@ class Comments : AppCompatActivity() {
         }
         super.onDestroy()
     }
-    override fun onResume() {
-        if (mRecyclerView != null) {
-            mRecyclerView!!.releasePlayer()
-        }
-        super.onResume()
-    }
     override fun onPause() {
         if (mRecyclerView != null) {
             mRecyclerView!!.releasePlayer()
