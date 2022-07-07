@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "218042479935",
+    "firebase_url": "https://socialmedia-assignment-default-rtdb.firebaseio.com",
+    "project_id": "socialmedia-assignment",
+    "storage_bucket": "socialmedia-assignment.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:218042479935:android:a901a9db4f24a667510f8a",
+        "android_client_info": {
+          "package_name": "com.socialmediaassignment"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "218042479935-7q6sinvoj3p0ku5c68nb6tru3d7cco23.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.socialmediaassignment",
+            "certificate_hash": "333e09c5d104f3a47cb1be90461c24203d9276fd"
+          }
+        },
+        {
+          "client_id": "218042479935-lf5nvefarnhml2i9s1n9ki8ogajb9tm6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUbkYKFit9yXtZioQWKENdgYHzDx02qxU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "218042479935-lf5nvefarnhml2i9s1n9ki8ogajb9tm6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
