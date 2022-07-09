@@ -1,11 +1,13 @@
 package com.socialmediaassignment
 
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
-import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import com.microsoft.appcenter.AppCenter
+import com.microsoft.appcenter.analytics.Analytics
+import com.microsoft.appcenter.crashes.Crashes
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,6 +15,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
+
+        AppCenter.configure(application, "c5b0a38d-eda2-4b7c-88b6-111480aa82c1")
+        if (AppCenter.isConfigured()) {
+            AppCenter.start(Analytics::class.java)
+            AppCenter.start(Crashes::class.java)
+        }
 
     }
 
